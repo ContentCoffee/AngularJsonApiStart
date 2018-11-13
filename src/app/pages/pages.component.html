@@ -1,0 +1,6 @@
+<ul *ngIf="pages">
+  <li *ngFor="let page of pages.data">
+    {{ page.attributes.title }}<br />
+    <image width="100" [image]="pages.getInclude(page.getRelatedUuid('field_image'))"></image>
+  </li>
+</ul>

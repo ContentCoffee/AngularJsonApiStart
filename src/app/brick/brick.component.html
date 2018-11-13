@@ -1,0 +1,5 @@
+<div *ngIf="brick.data.type == 'brick--text'" innerHTML="{{ brick.data.attributes.field_content.value }}"></div>
+
+<h3 *ngIf="brick.data.type == 'brick--section_title'">{{ brick.data.attributes.title }}</h3>
+
+<image *ngIf="brick.data.type == 'brick--image'" [image]="brick.getInclude(brick.data.getRelatedUuid('field_image'))"></image>
