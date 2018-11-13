@@ -1,4 +1,5 @@
-{{ uuid }}
+{{ uuid }} <a routerLink="/pages">back to pages</a>
+<hr />
 <div *ngIf="page">
 <h1>{{ page.data.attributes.title }}</h1>
   
@@ -6,7 +7,6 @@
     <brick [brick]="brick"></brick>
   </div>
 
-  <hr />
-  <image [image]="page.getInclude(page.data.getRelatedUuid('field_image'))"></image>
+ 
 
 </div>

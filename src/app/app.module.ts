@@ -8,6 +8,7 @@ import { PageComponent } from './page/page.component';
 import { BrickComponent } from './brick/brick.component';
 import { ImageComponent } from './image/image.component';
 import { PagesComponent } from './pages/pages.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 
@@ -21,7 +22,8 @@ import { PagesComponent } from './pages/pages.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     JwtHelper,

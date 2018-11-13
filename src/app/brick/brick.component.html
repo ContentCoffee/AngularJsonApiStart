@@ -2,4 +2,12 @@
 
 <h3 *ngIf="brick.data.type == 'brick--section_title'">{{ brick.data.attributes.title }}</h3>
 
-<image *ngIf="brick.data.type == 'brick--image'" [image]="brick.getInclude(brick.data.getRelatedUuid('field_image'))"></image>
+<image *ngIf="brick.data.type == 'brick--image'" [width]="200" [image]="brick.getInclude(brick.data.getRelatedUuid('field_image'))"></image>
+
+<div *ngIf="brick.data.type == 'brick--call_to_action'">
+
+    
+    <div innerHTML="{{ brick.data.attributes.field_content.value }}"></div>
+    <a href="{{ brick.data.attributes.field_button.uri }}">{{ brick.data.attributes.field_button.title }}</a>
+
+</div>
