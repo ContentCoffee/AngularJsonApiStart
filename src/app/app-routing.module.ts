@@ -4,8 +4,9 @@ import { PagesComponent } from './pages/pages.component';
 import { PageComponent } from './page/page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/pages', pathMatch: 'full' },
-  { path: 'pages', component: PagesComponent },
+  { path: '', redirectTo: '/pages/0', pathMatch: 'full' },
+  { path: 'pages/:page', component: PagesComponent },
+  { path: 'pages', redirectTo: '/pages/0', pathMatch: 'full'},
   { path: 'page/:uuid', component: PageComponent },
 ];
 

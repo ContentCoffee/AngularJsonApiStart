@@ -7,6 +7,7 @@ import { JsonApiEntity } from './JsonApiEntity';
     jsonapi: any;
     links: any;
     included: Array<Entity>;
+    meta: any;
 
     /** @inheritdoc */
     public deserialize(input: any) {

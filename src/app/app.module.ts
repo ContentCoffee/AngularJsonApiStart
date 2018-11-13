@@ -9,6 +9,7 @@ import { BrickComponent } from './brick/brick.component';
 import { ImageComponent } from './image/image.component';
 import { PagesComponent } from './pages/pages.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BackButtonComponent } from './back-button/back-button.component';
 
 
 
@@ -18,7 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
     PageComponent,
     BrickComponent,
     ImageComponent,
-    PagesComponent
+    PagesComponent,
+    BackButtonComponent
   ],
   imports: [
     BrowserModule,

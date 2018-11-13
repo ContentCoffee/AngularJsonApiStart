@@ -1,6 +1,20 @@
+<div *ngIf="pages">
+  <a *ngIf="pages.links.prev" routerLink="/pages/{{ currentPage - 1 }}">Prev</a>
+  <span *ngIf="pages.links.prev && pages.links.next"> | </span>
+  <a *ngIf="pages.links.next" routerLink="/pages/{{ currentPage + 1 }}">Next</a>
+  <br />
+  <span *ngIf="totalPages">
+    <span *ngFor="let theNumber of this.pageNumbers; index as i">
+      <span *ngIf="i != 0"> | </span><a routerLink="/pages/{{ theNumber }}">{{ (theNumber + 1) }}</a>
+    </span>
+  </span>
+</div>
+
+<hr />
 <ul *ngIf="pages">
   <li *ngFor="let page of pages.data">
-    <a routerLink="/page/{{ page.id }}">{{ page.attributes.title }}</a><br />
+    <a routerLink="/page/{{ page.id }}" [queryParams]="{returnTo: '/pages/' + currentPage}">{{ page.attributes.title }}</a><br />
     <image width="100" [image]="pages.getInclude(page.getRelatedUuid('field_image'))"></image>
   </li>
 </ul>
+
