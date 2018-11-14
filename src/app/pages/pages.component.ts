@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PagesComponent implements OnInit {
 
   pages: JsonApiCollection;
-  limit: number = 25;
+  limit: number = 8;
   totalPages: number = 0;
   currentPage: number = -1;
   pageNumbers: Array<number> = [];

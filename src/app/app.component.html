@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+
+<mat-toolbar color="primary" class="fixed-header">
+    <mat-toolbar-row>
+        <div class="websiteLogo">
+            <a routerLink="/">
+                Drupal Play
+            </a>
+        </div>
+        <menu [menu]="menu" name="main"></menu>
+    </mat-toolbar-row>
+</mat-toolbar>
+<main>    
+    <router-outlet></router-outlet>
+</main>
