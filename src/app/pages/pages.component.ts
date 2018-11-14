@@ -11,17 +11,14 @@ import { ActivatedRoute } from '@angular/router';
 export class PagesComponent implements OnInit {
 
   pages: JsonApiCollection;
-  limit: number = 10;
+  limit: number = 25;
   totalPages: number = 0;
   currentPage: number = -1;
   pageNumbers: Array<number> = [];
 
-  constructor(private api: ApiService, private route: ActivatedRoute) { 
-    console.log(this);
-  }
+  constructor(private api: ApiService, private route: ActivatedRoute) { }
 
-  async ngOnInit() {
-    
+  async ngOnInit() {  
     this.route.params.subscribe( params => 
       {
         if (params["page"] != this.currentPage) {
@@ -34,7 +31,6 @@ export class PagesComponent implements OnInit {
 
   async loadUp() {
     let params = '?include=field_image&page[offset]='+(this.currentPage * this.limit)+'&page[limit]=' + this.limit;
-    console.log(params);
     this.pages = await this.api.fetchMany('node', 'page', params);
     this.totalPages = Math.ceil( this.pages.meta.count / this.limit );
     this.pageNumbers = [];

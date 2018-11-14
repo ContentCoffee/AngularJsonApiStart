@@ -20,10 +20,6 @@ export class PageComponent implements OnInit {
   async ngOnInit() {
     this.uuid = this.route.snapshot.paramMap.get('uuid');
     this.page = new Page().deserialize(await this.api.fetchOneInclude('node', 'page', this.uuid, ['field_image']));
-    this.route.queryParams.subscribe( params => 
-      {
-        this.previousUrl = params.previous;
-      });
   }
 
 }

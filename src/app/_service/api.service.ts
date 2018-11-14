@@ -21,7 +21,7 @@ export class ApiService {
         let headers = new HttpHeaders();
         headers = headers.append('Content-type', 'application/json');
         headers = headers.append('Cache-Control', 'no-cache');
-        //headers = headers.append('Authorization', 'Bearer ' + this.auth.token);
+        headers = headers.append('Authorization', 'Bearer ' + this.auth.token);
         return headers;
     }
 
@@ -30,11 +30,11 @@ export class ApiService {
     private async makeRequest(protocol:string, url:string, body:any = {}):Promise<any> { 
       
       // First, look if we are authenticated.
-      // const authed = await this.auth.login().catch(rejected => {
-      //   return new Promise((resolve, reject) => {
-      //     reject('auth problems');
-      //   });
-      // });
+      const authed = await this.auth.login().catch(rejected => {
+        return new Promise((resolve, reject) => {
+          reject('authentication problems, the auth service died!');
+        });
+      });
  
       // Make the call!
       return this.http.request(protocol.toUpperCase(), url, {
@@ -95,28 +95,4 @@ export class ApiService {
       return this.makeRequest('delete', u);
     }
 
-    async getContent(host: number, hostType: string, container: string, language: string) {
-      let brickTypes = await this.fetchMany('brick_type', 'brick_type');
-      console.log(host);
-
-      let bricks: Array<Entity> = [];
-      for (const brickType of brickTypes.data) {
-        let bricksOfType = await this.fetchMany('brick', brickType.attributes.type, 
-          '?filter[content_parent_type]=' + hostType + 
-          '&filter[langcode]=' + language + 
-          '&filter[content_container]=' + container + 
-          '&filter[content_parent]=' + host)
-          .then(bricksOfType => {
-          bricksOfType.data.forEach(brick => {
-            bricks.push(brick);
-          });
-        });
-      }
-      
-      bricks = bricks.sort(function(a, b){
-        return a.attributes.content_weight - b.attributes.content_weight;
-      });
-
-      return bricks;
-    }
 }
