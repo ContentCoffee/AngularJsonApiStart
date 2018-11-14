@@ -1,5 +1,5 @@
 <span *ngIf="menu">
   <a *ngFor="let item of menu.getItems()" mat-button routerLink="{{ item.attributes.link.uri.replace('internal:', '') }}">
-    <span class="">{{ item.attributes.title }}</span>
+    <span class="label"><mat-icon>{{ item.attributes.link.options.attributes.icon }}</mat-icon>{{ item.attributes.title }}</span>
   </a>
 </span>

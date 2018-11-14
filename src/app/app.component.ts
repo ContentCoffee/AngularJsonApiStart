@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './_service';
 import { Menu } from './_model';
+import { Meta, Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-root',
@@ -10,14 +12,17 @@ import { Menu } from './_model';
 
 export class AppComponent implements OnInit {
 
-  menu: Menu;
-  
-  constructor(private api: ApiService) { 
+  constructor(private api: ApiService,public meta: Meta, public title: Title) { 
 
   }
 
-  async ngOnInit() {
-    this.menu = new Menu().deserialize(await this.api.fetchMany('menu_link_content', 'menu_link_content', '?filter[menu_name][value]=main&sort=weight'));
+  ngOnInit() {
+    this.meta.updateTag({ name: 'description', content: 'loremippy' }); 
+    this.title.setTitle('titties');    
   }
 
 }
+
+
+
+
