@@ -1,3 +1,8 @@
+<div *ngIf="pagesContent">
+  <h1>{{ pagesContent.attributes.title }}</h1>
+  <div innerHtml="{{ pagesContent.attributes.body.value }}"></div>
+</div>
+
 <div *ngIf="pages">
   <a *ngIf="pages.links.prev" routerLink="/pages/{{ currentPage - 1 }}">Prev</a>
   <span *ngIf="pages.links.prev && pages.links.next"> | </span>

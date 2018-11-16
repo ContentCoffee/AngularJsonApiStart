@@ -6,7 +6,16 @@ export class ConfigService {
     private DRUPALSERVER = 'http://druplay.loc';
     private USER = 'admin';
     private PASS = 'admin';
-    private JSONAPIPATH = '/jsonapi/';
+    private JSONAPIPATH = 'jsonapi/';
+    private LANGUAGE = 'en';
+
+    set language(langcode: string) {
+        this.LANGUAGE = langcode;
+    }
+
+    get language() {
+        return this.LANGUAGE;
+    }
 
     get drupalServer() {
         return this.DRUPALSERVER;
@@ -21,6 +30,6 @@ export class ConfigService {
     }
 
     get jsonApiPath() {
-        return this.JSONAPIPATH;
+        return '/' + this.language + '/' + this.JSONAPIPATH;
     }
 }

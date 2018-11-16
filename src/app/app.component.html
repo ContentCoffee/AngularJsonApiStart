@@ -1,10 +1,25 @@
+<div *ngIf="language == 'en'">
+    <mat-toolbar color="primary" class="fixed-header">
+        <mat-toolbar-row>
+            <a routerLink="/"><mat-icon>home</mat-icon></a>
+            <menu name="main"></menu>
+            <a mat-button (click)="switchLanguage()">Switch Language</a>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <main>    
+        <router-outlet></router-outlet>
+    </main>
+</div>
 
-<mat-toolbar color="primary" class="fixed-header">
-    <mat-toolbar-row>
-        <a routerLink="/"><mat-icon>home</mat-icon></a>
-        <menu name="main"></menu>
-    </mat-toolbar-row>
-</mat-toolbar>
-<main>    
-    <router-outlet></router-outlet>
-</main>
+<div *ngIf="language == 'nl'">
+    <mat-toolbar color="primary" class="fixed-header">
+        <mat-toolbar-row>
+            <a routerLink="/"><mat-icon>home</mat-icon></a>
+            <menu name="main"></menu>
+            <a mat-button (click)="switchLanguage()">Switch Language</a>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <main>    
+        <router-outlet></router-outlet>
+    </main>
+</div>

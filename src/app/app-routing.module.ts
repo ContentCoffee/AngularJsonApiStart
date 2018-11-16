@@ -4,10 +4,12 @@ import { PagesComponent } from './pages/pages.component';
 import { PageComponent } from './page/page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/pages/0', pathMatch: 'full' },
-  { path: 'pages/:page', component: PagesComponent },
-  { path: 'pages', redirectTo: '/pages/0', pathMatch: 'full'},
-  { path: 'page/:uuid', component: PageComponent },
+  { path: '', redirectTo: 'en/pages/0', pathMatch: 'full' },
+  { path: 'nl/paginas/:page', component: PagesComponent },
+  { path: 'en/pages/:page', component: PagesComponent },
+  
+  { path: 'nl/pagina/:uuid', component: PageComponent },
+  { path: 'en/page/:uuid', component: PageComponent },
 ];
 
 @NgModule({

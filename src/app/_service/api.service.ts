@@ -9,11 +9,12 @@ import { mapToExpression } from '@angular/compiler/src/render3/view/util';
 @Injectable()
 export class ApiService {
 
-    baseUrl = 'reset this in the constructor?';
+    get baseUrl() {
+      return this.config.drupalServer + this.config.jsonApiPath;
+    } 
 
     constructor(private config: ConfigService, private auth: authService, private http: HttpClient) {
-      //this.auth.logout();  
-      this.baseUrl = this.config.drupalServer + this.config.jsonApiPath;
+      //this.auth.logout();
     }
 
     // Build up some standard headers for when making a call.

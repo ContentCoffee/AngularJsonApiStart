@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../_service';
-import { JsonApiCollection } from '../_model';
+import { JsonApiCollection, JsonApiEntity } from '../_model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PagesComponent implements OnInit {
 
+  pagesContent: any;
   pages: JsonApiCollection;
   limit: number = 8;
   totalPages: number = 0;
@@ -32,6 +33,9 @@ export class PagesComponent implements OnInit {
   async loadUp() {
     let params = '?include=field_image&page[offset]='+(this.currentPage * this.limit)+'&page[limit]=' + this.limit;
     this.pages = await this.api.fetchMany('node', 'page', params);
+    this.pagesContent = await this.api.fetchMany('node', 'pages');
+    this.pagesContent = this.pagesContent.data.pop();
+
     this.totalPages = Math.ceil( this.pages.meta.count / this.limit );
     this.pageNumbers = [];
     for ( let i = 0; i < this.totalPages; i++) {
