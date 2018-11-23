@@ -12,7 +12,6 @@ import { ImageComponent } from './image/image.component';
 import { PagesComponent } from './pages/pages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BackButtonComponent } from './back-button/back-button.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MenuComponent } from './menu/menu.component';
 
 
@@ -33,7 +32,6 @@ import { MenuComponent } from './menu/menu.component';
     MaterialModule,
     HttpClientModule,
     AppRoutingModule,
-    FlexLayoutModule
   ],
   providers: [
     JwtHelper,
